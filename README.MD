@@ -36,8 +36,9 @@ Utilizada para la generación de números aleatorios. colorama: Utilizada para i
 Asegurate de tener instaladas las bibliotecas de colorama y kivy. Si no las tienes instaladas puedes ejecutar el siguiente codigo en la terminal de python: pip install colorama pip install kivy
 
 ## Instrucciones de Instalación
-1. Abre una terminal(preferiblemente git bash)y clona el repositorio usando: `https://github.com/Santiago-mg/BatallaNavalKivy.git` .
-2. Cambia/parate a la carpeta src usando: `cd BatallaNavalKivy/src`.
+1. Abre una terminal(preferiblemente git bash)y clona el repositorio primero indicando en que parte del dispositivo guardar el proyecto usando el comando: `cd Downloads` por ejemplo
+2. Luego se procede a ejecuatar el comando: `git clone https://github.com/Santiago-mg/BatallaNavalKivy.git` .
+3. Cambia/parate a la carpeta src usando: `cd BatallaNavalKivy/src`.
 
 ### Interfaz grafica
 
