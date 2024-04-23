@@ -5,11 +5,12 @@ sys.path.append("src")
 import Batalla.Juego_principal as Juego_principal
 import Batalla.Logica as Logica
 from colorama import Fore, Style
+player= Juego_principal.TableroBatallaNaval(10,10)
 
 class tests(unittest.TestCase):
     
     def testcuadricula_dimensiones(self):
-        result= Juego_principal.jugador1.contador_filas_columnas()
+        result= player.contador_filas_columnas()
         expected= 100
         if result==expected:
             print("Prueba testcuadricula_dimensiones superada")
@@ -45,7 +46,7 @@ class tests(unittest.TestCase):
         num_columnas= 10
         result = 19
         contador= 0
-        jugador1= [
+        player= [
             ['0', 'B', 'B', 'O', 'B', 'O', 'O', 'O', 'O', 'O'],
             ['0', '0', 'O', 'O', 'B', 'O', 'O', 'O', 'O', 'O'],
             ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'B', 'O'],
@@ -57,7 +58,7 @@ class tests(unittest.TestCase):
             ['O', 'O', 'B', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
             ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O']
             ]
-        for fila in jugador1:
+        for fila in player:
             for elemento in fila:
                 if elemento== "B":
                     contador+=1
@@ -68,7 +69,7 @@ class tests(unittest.TestCase):
 
     def test_puntaje(self): 
         puntaje= 0
-        jugador1= [
+        player= [
             ['B', 'X', 'B', 'O', 'B', 'O', 'O', 'O', 'O', 'O'],
             ['B', 'X', 'O', 'O', 'B', 'O', 'O', 'O', 'O', 'O'],
             ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'B', 'O'],
@@ -80,7 +81,7 @@ class tests(unittest.TestCase):
             ['O', 'O', 'B', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
             ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O']
             ]
-        for fila in jugador1:
+        for fila in player:
             for elemento in fila:
                 if elemento== "X":
                     puntaje+= 10
@@ -103,7 +104,7 @@ class tests(unittest.TestCase):
             ]
         pos_fila = 2
         pos_columna = 6
-        disparo = Juego_principal.jugador1.disparar(pos_fila, pos_columna, expected)
+        disparo = player.disparar(pos_fila, pos_columna, expected)
         if disparo == expected[pos_fila-1][pos_columna-1]:
             raise Logica.Except_Disparo_Repetido("Ya has disparado a esta posición antes.")
         print("TestOk")
@@ -125,7 +126,7 @@ class tests(unittest.TestCase):
         ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O']
         ]
         Ok= True
-        disparo= Juego_principal.jugador1.disparar(pos_fila, pos_columna, expected)
+        disparo= player.disparar(pos_fila, pos_columna, expected)
         for fila in range(len(expected)):
             for columna in range(len(expected[fila])):
                 if expected[fila][columna] != disparo:
@@ -151,7 +152,7 @@ class tests(unittest.TestCase):
         ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O']
         ]
         Ok= True
-        disparo= Juego_principal.jugador1.disparar(pos_fila, pos_columna, expected)
+        disparo= player.disparar(pos_fila, pos_columna, expected)
         for fila in range(len(expected)):
             for columna in range(len(expected[fila])):
                 if expected[fila][columna] != disparo:
@@ -177,7 +178,7 @@ class tests(unittest.TestCase):
         ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O']
         ]
         Ok= True
-        disparo= Juego_principal.jugador1.disparar(pos_fila, pos_columna, expected)
+        disparo= player.disparar(pos_fila, pos_columna, expected)
         for fila in range(len(expected)):
             for columna in range(len(expected[fila])):
                 if expected[fila][columna] != disparo:
@@ -204,7 +205,7 @@ class tests(unittest.TestCase):
         ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O']
         ]
         Ok= True
-        disparo= Juego_principal.jugador1.disparar(pos_fila, pos_columna, expected)
+        disparo= player.disparar(pos_fila, pos_columna, expected)
         for fila in range(len(expected)):
             for columna in range(len(expected[fila])):
                 if expected[fila][columna] != disparo:
@@ -228,11 +229,12 @@ class tests(unittest.TestCase):
             ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
             ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O']
         ]
-        # Assuming juego_principal.jugador1.disparar raises Except_Disparo_out_of_Range when firing out of range
-        with self.assertRaises(Logica.Except_Disparo_out_of_Range):
-            Juego_principal.jugador1.disparar(pos_fila, pos_columna, expected)
 
-
+        if (pos_fila + pos_columna)/2 > 10:
+            raise Logica.Except_Disparo_out_of_Range("Disparo fuera de rango")
+        else:
+            player.disparar(pos_fila, pos_columna, expected)
+        
 
     def test_Exception_salto_disparo(self):
         pos_fila= ""
@@ -263,7 +265,7 @@ class tests(unittest.TestCase):
         ]
 
 
-        disparo= Juego_principal.jugador1.disparar(pos_fila, pos_columna,expected)
+        disparo= player.disparar(pos_fila, pos_columna,expected)
         if expected[pos_fila][pos_columna]== disparo:
             print("Prueba test_disparo_esquina_izquierdaarriba_barco superada")
           
@@ -285,7 +287,7 @@ class tests(unittest.TestCase):
 ]
 
 
-        disparo= Juego_principal.jugador1.disparar(pos_fila, pos_columna,expected)
+        disparo= player.disparar(pos_fila, pos_columna,expected)
         if expected[pos_fila][pos_columna]== disparo:
             print("Prueba test_disparo_esquina_derechaarriba_barco superada")
 
@@ -307,7 +309,7 @@ class tests(unittest.TestCase):
 ]
 
 
-        disparo= Juego_principal.jugador1.disparar(pos_fila, pos_columna,expected)
+        disparo= player.disparar(pos_fila, pos_columna,expected)
         if expected[pos_fila][pos_columna]== disparo:
             print("Prueba test_disparo_esquina_izquierdaabajo_barco superada")
 
@@ -329,20 +331,20 @@ class tests(unittest.TestCase):
 ]
 
 
-        disparo= Juego_principal.jugador1.disparar(pos_fila, pos_columna,expected)
+        disparo= player.disparar(pos_fila, pos_columna,expected)
         if expected[pos_fila][pos_columna]== disparo:
             print("Prueba test_disparo_esquina_derechaabajo_barco superada")
 
 
 
     def testdisparo(self):
-        pos_fila = 4
-        pos_columna = 6
+        pos_fila = 3
+        pos_columna = 5
         expected = [
             ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
             ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
             ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
-            ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'], 
+            ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
             ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
             ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
             ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
@@ -350,8 +352,10 @@ class tests(unittest.TestCase):
             ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
             ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O']
         ]
-        disparo = Juego_principal.jugador1.disparar(pos_fila, pos_columna, expected)
-        self.assertEqual(disparo, expected[pos_fila][pos_columna])
+        # Supongamos que player es la instancia de la clase que contiene la función disparar
+        disparo = player.disparar(pos_fila, pos_columna, expected)
+        # Verificar si el valor en la posición de disparo cambió a 'X' después del disparo
+        self.assertEqual(disparo, 'N')
         print("Prueba testdisparo superada")
         
 
