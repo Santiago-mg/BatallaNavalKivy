@@ -38,16 +38,17 @@ Asegurate de tener instaladas las bibliotecas de colorama y kivy. Si no las tien
 ## Instrucciones de Instalación
 1. Abre una terminal(preferiblemente git bash)y clona el repositorio primero indicando en que parte del dispositivo guardar el proyecto usando el comando: `cd Downloads` por ejemplo
 2. Luego se procede a ejecuatar el comando: `git clone https://github.com/Santiago-mg/BatallaNavalKivy.git` .
-3. Cambia/parate a la carpeta src usando: `cd BatallaNavalKivy/src`.
 
 ### Interfaz grafica
-
-1. Cambia al directorio de interfaz usando: `cd Intefaz` .
-2. Ejectuta el archivo usando: `py interfazz.py` .
-3. Si deseas devolverte usa: `cd ..`
+1. Dirigete al lugar en donde tienes el archivo en tu dispositivo. 
+2. Parate en la carpeta src y lugo pasa a la carpeta interfaz.
+3. En la barra de arriba se encuentra el historial de las carpetas a las que has accedido, parate en interfaz y dale click derecho copiar direccion.
+4. Cambia al directorio de consola usando: `cd ` y pega la direccion que acabaste de copiar.
+5. Ejectuta el archivo usando: `python interfazz.py` .
+6. Si deseas devolverte usa: `cd ..`
 
 ### Consola
-
-1. Cambia al directorio de consola usando: `cd Batalla` .
-2. Ejectuta el archivo usando: `py Juego_principal.py` .
+1. Parate en la carpeta batalla y copia la direccion como en el pasao anterior.
+1. Cambia al directorio de consola usando: `cd` pega la direccion que acabaste de copiar.
+2. Ejectuta el archivo usando: `python Juego_principal.py` .
 3. Si deseas devolverte usa: `cd ..`
