@@ -2,8 +2,8 @@ import unittest
 import sys
 sys.path.append("src")
 
-import src.Batalla.Juego_principal as Juego_principal
-import src.Batalla.Logica as Logica
+import Batalla.Juego_principal as Juego_principal
+import Batalla.Logica as Logica
 from colorama import Fore, Style
 
 class tests(unittest.TestCase):
