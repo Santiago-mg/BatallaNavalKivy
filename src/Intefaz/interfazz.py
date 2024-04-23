@@ -9,6 +9,7 @@ import sys
 sys.path.append("src")
 
 from Batalla.Juego_principal import TableroBatallaNaval
+
 class alerta_jugador1(Popup):
     def __init__(self, **kwargs):
         super(alerta_jugador1, self).__init__(**kwargs)
@@ -75,13 +76,14 @@ class GameScreen(Screen):
                 casilla.columna = numero_columna
                 casilla.bind(on_press=self.Disparo_Jugador1)
                 if self.Tablero_Jugador2.buscar_barco():
-                    casilla.bind(on_press=self.show_popup)
+                    casilla.bind(on_press=self.alerta_ganador)
+                    print("El jugador 1 ha ganado")
                 fila.add_widget(casilla)
             Contenedor1.add_widget(fila)
 
         ContenedorA.add_widget(Contenedor1)
         self.add_widget(ContenedorA)
-    def show_popup2(self):
+    def alerta_impacto(self):
         popup = MyPopup_impacto()
         popup.open()
     
@@ -102,10 +104,10 @@ class GameScreen(Screen):
         # Check for sunk ships
         barco_hundido = self.Tablero_Jugador2.barco_hundido()
         if barco_hundido :
-            self.show_popup2()
+            self.alerta_impacto()
 
         self.manager.current = 'CambioDePantalla'
-    def show_popup(self, instance):
+    def alerta_ganador(self, instance):
         popup = alerta_jugador1()
         popup.open() 
 
@@ -133,13 +135,14 @@ class CambioDePantalla(Screen):
                 casilla.columna = numero_columna
                 casilla.bind(on_press=self.Disparo_Jugador2)
                 if self.Tablero_Jugador1.buscar_barco():
-                    casilla.bind(on_press=self.show_popup)
+                    casilla.bind(on_press=self.alerta_ganador)
+                    print("El jugador 2 ha ganado")
                 fila.add_widget(casilla)
             Contenedor2.add_widget(fila)
 
         ContenedorB.add_widget(Contenedor2)
         self.add_widget(ContenedorB)
-    def show_popup2(self):
+    def alerta_impacto(self):
         popup = MyPopup_impacto()
         popup.open()
 
@@ -158,11 +161,11 @@ class CambioDePantalla(Screen):
             instance.disabled= True
         barco_hundido =self.Tablero_Jugador1.barco_hundido()
         if barco_hundido:
-            self.show_popup2()
+            self.alerta_impacto()
 
         self.manager.current = 'Turno_Jugador1'
   
-    def show_popup(self, instance):
+    def alerta_ganador(self, instance):
         popup = alerta_jugador2()
         popup.open()
 

@@ -9,9 +9,7 @@ class Except_salto_disparo (Exception):
     """Aun no puedes pasar el turno,  no has elegido la posicion en la que dispararas"""
 
 class Except_Disparo_out_of_Range (Exception):
-    def __init__(self, mensaje="Disparo fuera de rango."):
-        self.mensaje = mensaje
-        super().__init__(self.mensaje)
+    pass
 
 class Except_disparo_Repetido (Exception):
     pass
