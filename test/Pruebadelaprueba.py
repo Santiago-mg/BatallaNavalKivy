@@ -2,8 +2,8 @@ import unittest
 import sys
 sys.path.append("src")
 
-import Batalla.Juego_principal as Juego_principal
-import Batalla.Logica as Logica
+import Model.Juego_principal as Juego_principal
+import Model.Logica as Logica
 from colorama import Fore, Style
 player= Juego_principal.TableroBatallaNaval(10,10)
 
@@ -338,13 +338,13 @@ class tests(unittest.TestCase):
 
 
     def testdisparo(self):
-        pos_fila = 3
-        pos_columna = 5
+        pos_fila = 4
+        pos_columna = 6
         expected = [
             ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
             ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
             ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
-            ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
+            ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'], 
             ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
             ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
             ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
@@ -352,10 +352,8 @@ class tests(unittest.TestCase):
             ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
             ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O']
         ]
-        # Supongamos que player es la instancia de la clase que contiene la función disparar
         disparo = player.disparar(pos_fila, pos_columna, expected)
-        # Verificar si el valor en la posición de disparo cambió a 'X' después del disparo
-        self.assertEqual(disparo, 'N')
+        self.assertEqual(disparo, expected[pos_fila][pos_columna])
         print("Prueba testdisparo superada")
         
 
