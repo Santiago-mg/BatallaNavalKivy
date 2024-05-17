@@ -4,10 +4,9 @@ from kivy.uix.button import Button
 from kivy.uix.label import Label
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.popup import Popup
-
 import sys
 sys.path.append("src")
-
+from Controller import Control
 from Model.Juego_principal import TableroBatallaNaval
 
 class alerta_jugador1(Popup):

@@ -1,7 +1,7 @@
 import unittest
 import sys
 sys.path.append("src")
-
+from Controller import Control
 import Model.Juego_principal as Juego_principal
 import Model.Logica as Logica
 from colorama import Fore, Style
