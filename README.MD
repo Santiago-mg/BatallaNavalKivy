@@ -11,6 +11,8 @@ Este archivo contiene la implementación del juego de Batalla Naval. Aquí se de
 
 ### pruebas.py
 Este archivo contiene pruebas unitarias para validar el funcionamiento del juego. Se utilizan las bibliotecas unittest y main para realizar las pruebas en la clase TableroBatallaNaval.
+### prueba.py 
+Este archivo contiene las pruebas unitarias confirmar el funcionamiento de la base de datos utilizada para guardar la partida anterior.
 
 ### Interfazz.py 
 interfaz.py proporciona una experiencia interactiva para jugar al clásico juego de Batalla Naval en una interfaz gráfica de usuario.
@@ -38,17 +40,24 @@ Asegurate de tener instaladas las bibliotecas de colorama y kivy. Si no las tien
 ## Instrucciones de Instalación
 1. Abre una terminal(preferiblemente git bash)y clona el repositorio primero indicando en que parte del dispositivo guardar el proyecto usando el comando: `cd Downloads` por ejemplo
 2. Luego se procede a ejecuatar el comando: `git clone https://github.com/Santiago-mg/BatallaNavalKivy.git` .
+3. Cambia/parate a la carpeta src usando: `cd BatallaNavalKivy/src`.
 
 ### Interfaz grafica
-1. Dirigete al lugar en donde tienes el archivo en tu dispositivo. 
-2. Parate en la carpeta src y lugo pasa a la carpeta interfaz.
-3. En la barra de arriba se encuentra el historial de las carpetas a las que has accedido, parate en interfaz y dale click derecho copiar direccion.
-4. Cambia al directorio de consola usando: `cd ` y pega la direccion que acabaste de copiar.
-5. Ejectuta el archivo usando: `python interfazz.py` .
-6. Si deseas devolverte usa: `cd ..`
+
+1. Cambia al directorio de interfaz usando: `cd Intefaz` .
+2. Ejectuta el archivo usando: `py interfazz.py` .
+3. Si deseas devolverte usa: `cd ..`
 
 ### Consola
-1. Parate en la carpeta batalla y copia la direccion como en el pasao anterior.
-1. Cambia al directorio de consola usando: `cd` pega la direccion que acabaste de copiar.
-2. Ejectuta el archivo usando: `python Juego_principal.py` .
+
+1. Cambia al directorio de consola usando: `cd Batalla` .
+2. Ejectuta el archivo usando: `py Juego_principal.py` .
 3. Si deseas devolverte usa: `cd ..`
+
+### Para interactuar con la base de datos 
+
+1. Cambia al directorio de consola usando: `cd Controller` . 
+2. Ejecuta el archivo preparativo de la base de datos:  `py Control.py` . 
+3. Devuelvete a src usando `cd ..` . 
+4. Cambia al directorio de View usando: `cd View` .
+5. Ejectuta el archivo para jugar usando: `py interfazz.py` .
