@@ -44,13 +44,13 @@ Asegurate de tener instaladas las bibliotecas de colorama y kivy. Si no las tien
 
 ### Interfaz grafica
 
-1. Cambia al directorio de interfaz usando: `cd Intefaz` .
+1. Cambia al directorio de interfaz usando: `cd View` .
 2. Ejectuta el archivo usando: `py interfazz.py` .
 3. Si deseas devolverte usa: `cd ..`
 
 ### Consola
 
-1. Cambia al directorio de consola usando: `cd Batalla` .
+1. Cambia al directorio de consola usando: `cd Model` .
 2. Ejectuta el archivo usando: `py Juego_principal.py` .
 3. Si deseas devolverte usa: `cd ..`
 
