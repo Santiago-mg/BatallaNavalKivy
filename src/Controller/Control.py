@@ -112,3 +112,28 @@ def cargar_partida():
     except psycopg2.Error as Error_al_cargar_la_partida:
         print("Error al cargar la partida:", Error_al_cargar_la_partida)
         return None, None
+import psycopg2
+from Controller import SecretConfig
+
+def consultar_numero_de_partidas_existentes():
+    try:
+        conexion = psycopg2.connect(
+            database=SecretConfig.PGDATABASE,
+            user=SecretConfig.PGUSER,
+            password=SecretConfig.PGPASSWORD,
+            host=SecretConfig.PGHOST,
+            port=SecretConfig.PGPORT
+        )
+        cursor = conexion.cursor()
+
+        cursor.execute("SELECT jugador1, jugador2, tablero_jugador1, tablero_jugador2 FROM Partidas")
+        partidas_guardadas = cursor.fetchall()
+
+        if partidas_guardadas:
+            numero_partidas = len(partidas_guardadas)
+            return numero_partidas
+        else:
+            return 0
+    except psycopg2.Error as Error_No_Existen_partidas_guardadas:
+        print("Error al consultar el numero de partidas guardadas:", Error_No_Existen_partidas_guardadas)
+        return None

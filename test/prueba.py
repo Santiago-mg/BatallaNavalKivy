@@ -7,7 +7,7 @@ import json
 import sys
 sys.path.append("src")
 # Importa las funciones para probar
-from Controller.Control import guardar_partida, eliminar_partida, cargar_partida
+from Controller.Control import guardar_partida, eliminar_partida, cargar_partida, consultar_numero_de_partidas_existentes
 from Controller import Control
 from Model.Juego_principal import TableroBatallaNaval
 
@@ -91,6 +91,28 @@ class TestFunciones(unittest.TestCase):
         self.assertIsNone(jugador1)
         self.assertIsNone(jugador2)
         self.assertEqual(mock_stdout.getvalue().strip(), "No hay partidas guardadas.")
+    def test_consultar_numero_de_partidas_existentes_exito(self, mock_connect):
+        # Mock de la conexión y el cursor
+        mock_connection = MagicMock()
+        mock_cursor = MagicMock()
+        mock_connect.return_value = mock_connection
+        mock_connection.cursor.return_value = mock_cursor
+        
+        # Mock del resultado de fetchall
+        mock_cursor.fetchall.return_value = [('jugador1', 'jugador2', '{"jugador1": {}}', '{"jugador2": {}}')]
+        
+        # Llamada a la función y verificación del resultado
+        result = consultar_numero_de_partidas_existentes()
+        self.assertEqual(result, 1)
+    
+    @patch('psycopg2.connect')
+    def test_consultar_numero_de_partidas_existentes_error(self, mock_connect):
+        # Simulación de una excepción en la conexión
+        mock_connect.side_effect = psycopg2.Error
+        
+        # Llamada a la función y verificación del resultado
+        result = consultar_numero_de_partidas_existentes()
+        self.assertIsNone(result)
 
 if __name__ == '__main__':
     unittest.main()
