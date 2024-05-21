@@ -53,6 +53,7 @@ Asegurate de tener instaladas las bibliotecas de colorama y kivy. Si no las tien
 1. Cambia al directorio de consola usando: `cd Model` .
 2. Ejectuta el archivo usando: `py Juego_principal.py` .
 3. Si deseas devolverte usa: `cd ..`
+Nota: en la consola esta implementada la logica del archivo `Control.py` acerca de guarda la partida anterior
 
 ### Para interactuar con la base de datos 
 
